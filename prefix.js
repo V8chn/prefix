@@ -1,17 +1,16 @@
-function longestCommonPrefix(strs) {
-    if (!strs.length || strs[0] === "")  return "";
+function removeDuplication(nums) {
+    if (!nums.length) return 0;
 
-    let prefix = strs[0];
+    let i = 0;
 
-    for (let i = 1; i < strs.length; i++) {
-        while (strs[i].indexOf(prefix) !== 0) {
-            prefix = prefix.slice(0, -1);
-
-            if (prefix === "") return prefix;
+    for (let j = 1; j < nums.length; j++) {
+        if (nums[i] !== nums[j]) {
+            i++;
+            nums[i] = nums[j];
         }
     }
 
-    return prefix;
-};
+    return i + 1;
+}
 
-console.log(longestCommonPrefix(["flower","flow","flight"]));
+console.log(removeDuplication([1,1,2]));
